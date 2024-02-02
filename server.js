@@ -1,44 +1,30 @@
 // JSON Server module
+// JSON Server module
 import { create, router as _router, defaults, rewriter } from "json-server";
-import cors from "cors";
-
 const server = create();
 const router = _router("db.json");
 
-const corsOptions = {
-  origin: ["http://localhost:5173", "https://banking-react-indol.vercel.app/"],
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
-  allowedHeaders: [
-    "Content-Type",
-    "Origin",
-    "X-Requested-With",
-    "Accept",
-    "x-client-key",
-    "x-client-token",
-    "x-client-secret",
-    "Authorization",
-  ],
-  credentials: true,
-};
+// Make sure to use the default middleware
+const middlewares = defaults();
 
-// Middleware setup
-server.use(cors(corsOptions));
-server.use(defaults()); // Make sure to use defaults() after cors() to include default JSON Server middlewares
+// Enable CORS by adding the appropriate headers
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Replace '*' with your actual origin
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
-// Custom route rewriter
-server.use(
-  rewriter({
-    "/*": "/$1",
-  })
-);
+server.use(middlewares);
 
-// Router
+// Add this before server.use(router)
 server.use(router);
 
 // Listen to port
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
+server.listen(3000, () => {
+  console.log("JSON Server is running");
 });
 
 // Export the Server API

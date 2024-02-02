@@ -1,12 +1,14 @@
 // JSON Server module
-import { create, router as _router, defaults, rewriter } from "json-server";
-import cors from "cors";
+const jsonServer = require("json-server");
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
 
-const server = create();
-const router = _router("db.json");
+// Make sure to use the default middleware
+const middlewares = jsonServer.defaults();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+// Enable CORS by adding the appropriate headers
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Replace '*' with your actual origin
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -14,20 +16,15 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Middleware setup
-server.use(defaults());
+server.use(middlewares);
+
+// Add this before server.use(router)
 server.use(router);
 
-// server.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).send("Something went wrong!");
-// });
-
 // Listen to port
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
+server.listen(3000, () => {
+  console.log("JSON Server is running");
 });
 
 // Export the Server API
-export default server;
+module.exports = server;

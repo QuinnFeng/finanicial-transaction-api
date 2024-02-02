@@ -12,7 +12,7 @@ server.use(
  // Add custom route here if needed
  jsonServer.rewriter({
   "/*": "/$1",
- })
+ }) 
 );
 server.use(router);
 // Listen to port

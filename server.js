@@ -1,9 +1,10 @@
-// JSON Server module
-import { create, router as _router, defaults, rewriter } from "json-server";
+import express from "express";
+import { create, router, as, _router, defaults, rewriter } from "json-server";
 import cors from "cors";
 
-const server = create();
-const router = _router("db.json");
+const expressApp = express();
+const jsonServer = create();
+const jsonRouter = _router("db.json");
 
 const corsOptions = {
   origin: ["http://localhost:5173", "https://banking-react-indol.vercel.app/"],
@@ -21,23 +22,21 @@ const corsOptions = {
   credentials: true,
 };
 
-// Middleware setup
-server.use(cors(corsOptions));
-server.use(defaults());
-server.options("/*", cors(corsOptions)); // Handle OPTIONS requests explicitly
-server.use(router);
-
-// Error handling middleware
-server.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
+// Express App
+expressApp.get("/", (req, res) => {
+  res.send("Welcome to NodeJS + Express + JSON Server! 🎈");
 });
 
-// Listen to port
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
+expressApp.listen(5000, () => {
+  console.log("Express server is running on port 5000");
 });
 
-// Export the Server API
-export default server;
+// JSON Server
+jsonServer.use(cors(corsOptions));
+jsonServer.use(defaults());
+jsonServer.options("/*", cors(corsOptions)); // Handle OPTIONS requests explicitly
+jsonServer.use(jsonRouter);
+
+jsonServer.listen(3000, () => {
+  console.log("JSON Server is running on port 3000");
+});

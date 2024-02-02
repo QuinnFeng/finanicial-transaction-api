@@ -4,11 +4,21 @@ import cors from "cors";
 const server = create();
 const router = _router("db.json");
 
-// const corsOptions = {
-//   origin: "*",
-//   credentials: true, //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// };
+const corsOptions = {
+  origin: ["http://localhost:5173", "https://banking-react-indol.vercel.app/"], // use your actual domain name (or localhost), using * is not recommended
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Origin",
+    "X-Requested-With",
+    "Accept",
+    "x-client-key",
+    "x-client-token",
+    "x-client-secret",
+    "Authorization",
+  ],
+  credentials: true,
+};
 
 // Make sure to use the default middleware
 const middlewares = defaults();
@@ -24,7 +34,7 @@ const middlewares = defaults();
 
 server.use(middlewares);
 // Add this before server.use(router)
-server.use(cors());
+server.use(cors(corsOptions));
 server.use(
   // Add custom route here if needed
   rewriter({

@@ -2,7 +2,7 @@
   "accounts": [
     {
       "id": 0,
-      "balance": 2482.69
+      "balance": 3432.78
     }
   ],
   "transactions": [
@@ -428,6 +428,96 @@
       "balance": 2482.69,
       "type": "ACH",
       "id": 1078
+    },
+    {
+      "date": "02/14/2025",
+      "description": "PAYCHEX ZF1556",
+      "isDeposit": true,
+      "amount": 463.1,
+      "balance": 2945.79,
+      "type": "ACH",
+      "id": 1079
+    },
+    {
+      "date": "02/17/2025",
+      "description": "RAISER 6795 EDI PAYMENT",
+      "isDeposit": true,
+      "amount": 56.88,
+      "balance": 3002.67,
+      "type": "ACH",
+      "id": 1080
+    },
+    {
+      "date": "02/20/2025",
+      "description": "FUEL 4",
+      "isDeposit": false,
+      "amount": 45.76,
+      "balance": 2957,
+      "type": "Debit Card",
+      "id": 1081
+    },
+    {
+      "date": "02/21/2025",
+      "description": "PAYCHEX ZF1556",
+      "isDeposit": true,
+      "amount": 463.1,
+      "balance": 3420.1,
+      "type": "ACH",
+      "id": 1082
+    },
+    {
+      "date": "02/24/2025",
+      "description": "RAISER 6795 EDI PAYMENT",
+      "isDeposit": true,
+      "amount": 61.29,
+      "balance": 3481.39,
+      "type": "ACH",
+      "id": 1083
+    },
+    {
+      "date": "02/28/2025",
+      "description": "COMCAST 8499052 460628490",
+      "isDeposit": false,
+      "amount": 25,
+      "balance": 3456.39,
+      "type": "ACH",
+      "id": 1084
+    },
+    {
+      "date": "02/28/2025",
+      "description": "PAYCHEX ZF1556",
+      "isDeposit": true,
+      "amount": 463.1,
+      "balance": 3919.49,
+      "type": "ACH",
+      "id": 1085
+    },
+    {
+      "date": "03/03/2025",
+      "description": "RAISER 6795 EDI PAYMENT",
+      "isDeposit": true,
+      "amount": 57.56,
+      "balance": 3977.05,
+      "type": "ACH",
+      "id": 1086
+    },
+    {
+      "date": "03/04/2025",
+      "description": "UAS PAYMENT",
+      "isDeposit": false,
+      "amount": 540.98,
+      "balance": 3476.07,
+      "type": "ACH",
+      "id": 1087
+    },
+    {
+      "date": "03/04/2025",
+      "description": "FUEL 4",
+      "isDeposit": false,
+      "amount": 43.29,
+      "balance": 3432.78,
+      "type": "Debit Card",
+      "id": 1088
     }
   ]
 }
